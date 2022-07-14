@@ -15,7 +15,7 @@ export const Register = () => {
         e.preventDefault();
         setLoading(true);
         try {
-            const data = await axios.post('http://localhost:3001/user/register', {
+            const data: any = await axios.post('user/register', {
                 login,
                 email,
                 password
@@ -25,11 +25,7 @@ export const Register = () => {
                     'Access-Control-Allow-Origin': '*',
                 }
             })
-            const response = await data.data;
-            console.log(response);
-            setMessage(response.message)
-        } catch (e: any) {
-            setMessage(e.response.data.message)
+            setMessage(data?.response?.data?.message === undefined ? `Użytkownik ${login} stworzony. Możesz się teraz zalogować.` : data.response.data.message)
         } finally {
             setLoading(false);
 
