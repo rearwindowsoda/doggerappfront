@@ -29,7 +29,6 @@ export const Register = () => {
             setMessage(data.data.message)
         } catch (e: any) {
             if (e) {
-                console.log(e)
                 setMessage((e as AxiosLoginDataError).response.data.message);
             }
 
