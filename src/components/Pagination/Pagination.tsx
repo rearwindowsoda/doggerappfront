@@ -11,7 +11,7 @@ const pageNumbers: number[]  = [];
 for (let i = props.currentPage + 1; i <= props.numberOfPages; ++i){
     pageNumbers.push(i);
     }
-    console.log(pageNumbers)
+
 
 return <nav>
 
