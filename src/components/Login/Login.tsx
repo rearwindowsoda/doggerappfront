@@ -28,12 +28,14 @@ export const Login = () => {
                 },
                 withCredentials: true,
             });
+            console.log(data)
             setLogged(true);
             setMessage('Logged in successfully :)');
             setNavigation(true)
 
         } catch (e: any) {
             if (e.response) {
+                console.log(e)
                 setMessage((e as AxiosLoginDataError).response.data.message);
             }
 

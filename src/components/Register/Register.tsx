@@ -26,7 +26,7 @@ export const Register = () => {
                     'Access-Control-Allow-Origin': '*',
                 }
             })
-            setMessage(data.data.message)
+            setMessage(data.data.message + ' You can log in now 🐶')
         } catch (e: any) {
             if (e) {
                 setMessage((e as AxiosLoginDataError).response.data.message);
