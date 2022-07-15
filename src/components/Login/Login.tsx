@@ -32,7 +32,6 @@ export const Login = () => {
             setMessage('Logged in successfully :)');
             setNavigation(true)
 
-
         } catch (e: any) {
             if (e.response) {
                 setMessage((e as AxiosLoginDataError).response.data.message);
