@@ -1,0 +1,15 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    flex-direction: column;
+}
+
+.logout-message {
+font-size: 2rem;
+    display: block;
+    padding: 10%;
+    background: beige;
+    border-radius: 3%;
+}

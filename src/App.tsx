@@ -9,6 +9,7 @@ import {NavBar} from "./components/common/NavBar/NavBar";
 import {Home} from "./components/Home/Home";
 import {TopTenPosts} from "./components/TopTen/TopTenPosts";
 import {UserContext} from "./contexts/user.context";
+import { Logout } from './components/Logout/Logout';
 
 function App() {
     const [logged, setLogged] = useState(false);
@@ -28,7 +29,7 @@ function App() {
                        element={<UserContext.Provider value={{logged, setLogged}}><Register/></UserContext.Provider>}/>
                 <Route path="/top10" element={<UserContext.Provider
                     value={{logged, setLogged}}><TopTenPosts/></UserContext.Provider>}/>
-
+                <Route path="/logout" element={<UserContext.Provider value={{logged, setLogged}}><Logout/></UserContext.Provider>}/>
             </Routes>
         </BrowserRouter>
     )
