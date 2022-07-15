@@ -2,6 +2,7 @@ import React, {SyntheticEvent, useState} from "react";
 import './Login.css'
 import axios from "axios";
 import {Loader} from "../common/Loader/Loader";
+import {Navigate} from "react-router-dom";
 
 export const Login = () => {
     const [loading, setLoading] = useState<boolean>(false);
@@ -34,9 +35,9 @@ export const Login = () => {
         }
     }
 
-    /*  if(navigation){
+      if(navigation){
               return <Navigate to="/"/>
-      }*/
+      }
     return (
         <main className="form-signin w-100 m-auto">
             <form onSubmit={submit}>

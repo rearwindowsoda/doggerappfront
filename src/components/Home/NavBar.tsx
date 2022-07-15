@@ -16,6 +16,5 @@ export const NavBar = () => {
                 <Link to="/register" className="btn btn-primary">Sign-up</Link>
             </div>
         </header>
-
     )
 }
