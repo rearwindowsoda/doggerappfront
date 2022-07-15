@@ -1,0 +1,7 @@
+.vote-message {
+    box-sizing: border-box;
+    display: block;
+background: beige;
+    padding: 5%;
+    margin: 5% auto;
+}
