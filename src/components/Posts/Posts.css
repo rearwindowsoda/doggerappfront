@@ -1,0 +1,39 @@
+
+.posts{
+display: flex;
+justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+.posts li {
+    list-style: none;
+    display: block;
+    margin: 5%;
+}
+.posts p {
+    padding: 5%;
+    font-size: 1.3rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+
+
+li>img{
+    max-width: 55vw;
+    border-radius: 2%;
+}
+
+@media screen and (max-width: 800px) {
+.posts{
+    margin: 0 auto;
+    display: block;
+}
+
+
+    .posts p {
+        padding: 5% 0;
+    }
+    li>img{
+        max-width: 80vw;
+    }
+}
