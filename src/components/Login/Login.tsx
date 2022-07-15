@@ -1,8 +1,9 @@
 import React, {SyntheticEvent, useState} from "react";
 import './Login.css'
-import axios from "axios";
+import axios, {AxiosStatic} from "axios";
 import {Loader} from "../common/Loader/Loader";
 import {Navigate} from "react-router-dom";
+import {AxiosLoginDataError} from "../../types/login";
 
 export const Login = () => {
     const [loading, setLoading] = useState<boolean>(false);
@@ -16,7 +17,7 @@ export const Login = () => {
         e.preventDefault();
         setLoading(true);
         try {
-            const data: any = await axios.post('/user/login', {
+            const data: AxiosStatic = await axios.post('/user/login', {
                 login,
                 password
             }, {
@@ -26,18 +27,26 @@ export const Login = () => {
                 },
                 withCredentials: true,
             })
+               setMessage('Logged in successfully :)');
+               setNavigation(true)
 
-            setMessage(data?.response?.data?.message === undefined ? 'Zalogowano pomyślnie' : data.response.data.message);
-            setNavigation(true);
-        } finally {
+
+        }catch (e:any) {
+            if(e.response){
+                setMessage((e as AxiosLoginDataError).response.data.message);
+            }
+
+
+        }
+        finally {
             setLoading(false);
 
         }
     }
 
-      if(navigation){
-              return <Navigate to="/"/>
-      }
+    if (navigation) {
+        return <Navigate to="/"/>
+    }
     return (
         <main className="form-signin w-100 m-auto">
             <form onSubmit={submit}>

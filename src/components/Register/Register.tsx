@@ -2,6 +2,7 @@ import React, {SyntheticEvent, useState} from "react";
 import axios from 'axios';
 import './Register.css'
 import {Loader} from "../common/Loader/Loader";
+import {AxiosLoginDataError, AxiosLoginDataResponse} from "../../types/login";
 
 export const Register = () => {
     const [loading, setLoading] = useState<boolean>(false);
@@ -15,7 +16,7 @@ export const Register = () => {
         e.preventDefault();
         setLoading(true);
         try {
-            const data: any = await axios.post('user/register', {
+            const data: AxiosLoginDataResponse = await axios.post('user/register', {
                 login,
                 email,
                 password
@@ -25,7 +26,14 @@ export const Register = () => {
                     'Access-Control-Allow-Origin': '*',
                 }
             })
-            setMessage(data?.response?.data?.message === undefined ? `Użytkownik ${login} stworzony. Możesz się teraz zalogować.` : data.response.data.message)
+            setMessage(data.data.message)
+        } catch (e: any) {
+            if (e) {
+                console.log(e)
+                setMessage((e as AxiosLoginDataError).response.data.message);
+            }
+
+
         } finally {
             setLoading(false);
 
