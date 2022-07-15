@@ -1,9 +1,10 @@
-import React, {SyntheticEvent, useState} from "react";
+import React, {SyntheticEvent, useContext, useState} from "react";
 import './Login.css'
 import axios, {AxiosStatic} from "axios";
 import {Loader} from "../common/Loader/Loader";
 import {Navigate} from "react-router-dom";
 import {AxiosLoginDataError} from "../../types/login";
+import {UserContext} from "../../contexts/user.context";
 
 export const Login = () => {
     const [loading, setLoading] = useState<boolean>(false);
@@ -11,7 +12,7 @@ export const Login = () => {
     const [password, setPassword] = useState<string>('');
     const [message, setMessage] = useState<string>('');
     const [navigation, setNavigation] = useState<boolean>(false);
-
+    const {logged, setLogged} = useContext(UserContext);
     // @TODO: Fix error type
     const submit = async (e: SyntheticEvent) => {
         e.preventDefault();
@@ -26,19 +27,19 @@ export const Login = () => {
                     'Access-Control-Allow-Credentials': '*',
                 },
                 withCredentials: true,
-            })
-               setMessage('Logged in successfully :)');
-               setNavigation(true)
+            });
+            setLogged(true);
+            setMessage('Logged in successfully :)');
+            setNavigation(true)
 
 
-        }catch (e:any) {
-            if(e.response){
+        } catch (e: any) {
+            if (e.response) {
                 setMessage((e as AxiosLoginDataError).response.data.message);
             }
 
 
-        }
-        finally {
+        } finally {
             setLoading(false);
 
         }
