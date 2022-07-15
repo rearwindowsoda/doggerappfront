@@ -1,9 +1,12 @@
-
-.posts{
-display: flex;
-justify-content: center;
+.container{
+    display: flex;
+    justify-content: center;
     align-items: center;
     box-sizing: border-box;
+   flex-direction: column;
+}
+.posts{
+
 }
 .posts li {
     list-style: none;
@@ -18,7 +21,7 @@ justify-content: center;
 
 
 
-li>img{
+.posts li>img{
     max-width: 55vw;
     border-radius: 2%;
 }
