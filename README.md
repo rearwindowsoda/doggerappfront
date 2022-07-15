@@ -1,10 +1,43 @@
-# Getting Started with Dogger App
+# Zaczynamy zabawę z aplikacją Dogger
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Aplikacja Dogger służy właścicielom psów do dzielenia się zdjęciami zawierającymi krótki opis swoich pociech z innymi. 
 
-## Available Scripts
+Każdemu zalogowanemu użytkownikowi przysługuje jeden głos. W każdej chwili może on zmienić swoje zdanie i zagłosować na zdjęcie innego pieska. 
 
-In the project directory, you can run:
+W czasie rzeczywistym przeliczane są głosy na najlepsze zdjęcia. Top 10 najlepszych postów wyświetla się pod zakładką "Top 10 Dogs".
+
+# Instalacja
+1. Potrzebujesz dostęp do backendu aplikacji, znajdziesz go pod tym adresem
+
+[DoggerAppBackend](https://https://github.com/rearwindowsoda/doggerapp)
+
+2. Z racji tego, że aplikacja nie przechowuje żadnych zdjęć lokalnie (tylko tymczasowo), potrzebujesz dostępu do API Imgur. Imgur posiada darmowe api. 
+
+[Więcej informacji tutaj](https://apidocs.imgur.com/)
+
+
+3. Musisz edytować wszysktie przykładowe pliki konfiguracyjne znajdujące się na backendzie:
+ - Folder src > config > cors > cors.example.ts - tutaj wpisujesz adres, z którego twój frontend będzie wysyłał zapytania.
+ - Folder src > db > config.example.ts - uzupełnij to danymi dostępowymi do API Imgur.
+ - Folder jwt > token-secret.example > Wygeneruj sekretną sól, która posłuży do autoryzowania użytkowników. Polecam skorzystać z, wbudowanego w Node.js, modułu Crypto i wygenerować sobie długą losową sól.
+ - Zmień nasłuchiwanie w pliku app.ts na wszystkie interfejsy sieciowe.
+ - W folderze utils > data-source.example.ts wpisz poprawne dane do połączenia się z twoją bazą MySQL.
+ - Zbuduj aplikację i umieść ją na serwerze! 
+ - Testuj aplikacje przygotowanymi przeze mnie kolekcjami do Insomnia (znajdziesz je w tym repo w root)
+
+4. Musisz edytować wszystkie przykładowe pliki konfiguracyjne znajdujące się na frontendzie:
+- Tutaj nie ma tego za dużo, edytuj plik axios.ts znajdujący się w folderze interceptors. Wpisz tam baseUrl twojego API.
+- Zbuduj aplikację i umieść ją na serwerze.
+- 
+
+## Uwaga!
+
+### Nie udostępniaj nikomu danych konfiguracyjnych!
+
+
+## React Available Scripts
+
+
 
 ### `yarn start`
 
